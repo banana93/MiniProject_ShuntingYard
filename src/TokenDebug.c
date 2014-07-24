@@ -8,6 +8,11 @@
 void tokenDump(Token *token)
 {
 	OperatorInfo *info;
+	if(token == NULL)
+	{
+		printf("token is NULL");
+		return;
+	}
 	if(((Number *)token)->type == NUMBER_TOKEN)
 	{
 		printf("Number Token = %d\n", ((Number *)token)->value);

@@ -1,0 +1,51 @@
+---
+:source:
+  :path: test
+  :file: test_Operator.c
+:successes:
+- :test: test_OperatorByID_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in
+  :line: 17
+  :message: ''
+- :test: test_OperatorByID_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in
+  :line: 24
+  :message: ''
+- :test: test_OperatorByID_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in
+  :line: 32
+  :message: ''
+- :test: test_OperatorByID_should_not_print_out_due_to_the_operator_is_not_in_the_table
+  :line: 39
+  :message: ''
+- :test: test_OperatorByName_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in
+  :line: 45
+  :message: ''
+- :test: test_OperatorByName_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in
+  :line: 52
+  :message: ''
+- :test: test_OperatorByName_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in
+  :line: 59
+  :message: ''
+- :test: test_OperatorByName_should_not_print_out_UNKNOWN_OP_details_due_to_UNKNOWN_OP_parameter_is_passed_in
+  :line: 67
+  :message: ''
+- :test: test_executeAdd_whether_it_can_push_two_number_in_and_pop_out
+  :line: 73
+  :message: ''
+- :test: test_executeAdd_after_push_an_operator_type_should_throw_an_exception
+  :line: 89
+  :message: ''
+- :test: test_executeAdd_will_throw_an_exception_if_the_first_or_second_popResult_is_NULL
+  :line: 110
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 11
+  :passed: 11
+  :failed: 0
+  :ignored: 0
+:stdout:
+- Number Token = 3
+- Number Token = 2
+- Operator Token = +
+- Number Token = 2
+- token is NULL

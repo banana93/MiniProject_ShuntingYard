@@ -16,7 +16,7 @@ void test_explore_whether_it_regconize_the_NUMBER_TOKEN_and_print_it_out(void)
 {
 	int result;
 	Stack *stack = stackNew(10);
-	String expression = {.string = "2"};
+	String expression = {.string = "5"};
 	Number num5= {.type = NUMBER_TOKEN, .value = 5};
 	
 	getToken_ExpectAndReturn(&expression, (Token *)&num5);

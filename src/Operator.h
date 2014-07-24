@@ -3,6 +3,7 @@
 #include "OperatorToken.h"
 #include "Token.h"
 #include "Stack.h"
+#include "ErrorCode.h"
 
 int executeAdd(Stack *dataStack);
 int executeSub(Stack *stack);

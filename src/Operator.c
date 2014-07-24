@@ -8,27 +8,33 @@
 #include "Operator.h"
 #include "TokenDebug.h"
 #include "CException.h"
-									 
+#include "ErrorCode.h"
 
 int executeAdd(Stack *dataStack)
 {
-	Number *popResult;
-	int count = 0, *result = 0;
+	Number *left;
+	Number *right;
+	int result = 0;
 	
-	// do
-	// {
-		popResult = (Number *)stackPop(dataStack);
-		tokenDump((Token *)popResult);
-		// count++;
-		// result = result + popResult;
-		// printf("result: %d\n", result);
+	right = (Number *)stackPop(dataStack);
+	tokenDump((Token *)right);
+	
+	if((Token *)right == NULL)
+		Throw(ERR_INCOMPLETE_NUMBER);
+	
+	if(right->type != NUMBER_TOKEN)
+		Throw(ERR_NOT_NUMBER_TOKEN);
 		
-		// if(count < 2 || popResult == NULL)
-		// {
-			// Throw(ERR_INCOMPLETE_NUMBER);
-		// }
-	// }while(popResult != NULL);
+	left = (Number *)stackPop(dataStack);
+	tokenDump((Token *)left);
 	
-	
-	return 1;
+	if((Token *)left == NULL)
+		Throw(ERR_INCOMPLETE_NUMBER);
+		
+	if(left->type != NUMBER_TOKEN)
+		Throw(ERR_NOT_NUMBER_TOKEN);
+		
+	result = left->value + right->value;
+		
+	return result;
 }

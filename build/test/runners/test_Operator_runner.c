@@ -49,6 +49,7 @@ extern void test_OperatorByName_should_print_out_BITWISE_OR_OP_details_due_to_BI
 extern void test_OperatorByName_should_not_print_out_UNKNOWN_OP_details_due_to_UNKNOWN_OP_parameter_is_passed_in(void);
 extern void test_executeAdd_whether_it_can_push_two_number_in_and_pop_out(void);
 extern void test_executeAdd_after_push_an_operator_type_should_throw_an_exception(void);
+extern void test_executeAdd_will_throw_an_exception_if_the_first_or_second_popResult_is_NULL(void);
 
 
 //=======Mock Management=====
@@ -84,16 +85,17 @@ int main(void)
 {
   Unity.TestFile = "test_Operator.c";
   UnityBegin();
-  RUN_TEST(test_OperatorByID_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in, 16);
-  RUN_TEST(test_OperatorByID_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in, 23);
-  RUN_TEST(test_OperatorByID_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in, 31);
-  RUN_TEST(test_OperatorByID_should_not_print_out_due_to_the_operator_is_not_in_the_table, 38);
-  RUN_TEST(test_OperatorByName_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in, 44);
-  RUN_TEST(test_OperatorByName_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in, 51);
-  RUN_TEST(test_OperatorByName_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in, 58);
-  RUN_TEST(test_OperatorByName_should_not_print_out_UNKNOWN_OP_details_due_to_UNKNOWN_OP_parameter_is_passed_in, 66);
-  RUN_TEST(test_executeAdd_whether_it_can_push_two_number_in_and_pop_out, 72);
-  RUN_TEST(test_executeAdd_after_push_an_operator_type_should_throw_an_exception, 87);
+  RUN_TEST(test_OperatorByID_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in, 17);
+  RUN_TEST(test_OperatorByID_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in, 24);
+  RUN_TEST(test_OperatorByID_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in, 32);
+  RUN_TEST(test_OperatorByID_should_not_print_out_due_to_the_operator_is_not_in_the_table, 39);
+  RUN_TEST(test_OperatorByName_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in, 45);
+  RUN_TEST(test_OperatorByName_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in, 52);
+  RUN_TEST(test_OperatorByName_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in, 59);
+  RUN_TEST(test_OperatorByName_should_not_print_out_UNKNOWN_OP_details_due_to_UNKNOWN_OP_parameter_is_passed_in, 67);
+  RUN_TEST(test_executeAdd_whether_it_can_push_two_number_in_and_pop_out, 73);
+  RUN_TEST(test_executeAdd_after_push_an_operator_type_should_throw_an_exception, 89);
+  RUN_TEST(test_executeAdd_will_throw_an_exception_if_the_first_or_second_popResult_is_NULL, 110);
 
   return (UnityEnd());
 }

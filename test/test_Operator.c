@@ -3,11 +3,12 @@
 #include "mock_Token.h"
 #include <stdio.h>
 #include "Stack.h"
+#include "Token.h"
 #include "NumberToken.h"
 #include "OperatorToken.h"	
 #include "TokenDebug.h"
-#include "CException.h"
 #include "ErrorCode.h"
+#include "CException.h"
 
 void setUp(void){}
 
@@ -81,26 +82,49 @@ void test_executeAdd_whether_it_can_push_two_number_in_and_pop_out(void)
 	
 
 	result = executeAdd(stack);
+	TEST_ASSERT_EQUAL(5, result);
 	stackDel(stack);
 }
 
 void test_executeAdd_after_push_an_operator_type_should_throw_an_exception(void)
 {
 	Stack *stack = stackNew(10);
-	int *result;
+	int result;
+	Operator *operator;
+	operator = operatorNewByID(ADD_OP);
 	CEXCEPTION_T err;
 	
 	Try
 	{
-		
-		TEST_FAIL_MESSAGE("Should have throw an exception due to incomplete number!");
+		stackPush(stack, operator);
+		result = executeAdd(stack);
+		TEST_FAIL_MESSAGE("Should have throw an exception due to it is not a number token!");
+	}
+	Catch(err)
+	{
+		TEST_ASSERT_EQUAL_MESSAGE(ERR_NOT_NUMBER_TOKEN, err, "Expect ERR_NOT_NUMBER_TOKEN exception");
+	}
+	stackDel(stack);
+}
+
+void test_executeAdd_will_throw_an_exception_if_the_first_or_second_popResult_is_NULL(void)
+{
+	Stack *stack = stackNew(10);
+	int result;
+	Number *value1 = numberNew(2);
+	CEXCEPTION_T err;
+	
+	Try
+	{
+		stackPush(stack, value1);
+		result = executeAdd(stack);
+		TEST_FAIL_MESSAGE("Should have throw an exception due to incomplete number");
 	}
 	Catch(err)
 	{
 		TEST_ASSERT_EQUAL_MESSAGE(ERR_INCOMPLETE_NUMBER, err, "Expect ERR_INCOMPLETE_NUMBER exception");
-		printf("Expected exception\n", err);
 	}
-	
 	stackDel(stack);
 }
-	
+
+
