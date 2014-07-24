@@ -1,0 +1,44 @@
+---
+:source:
+  :path: test
+  :file: test_Operator.c
+:successes:
+- :test: test_OperatorByID_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in
+  :line: 16
+  :message: ''
+- :test: test_OperatorByID_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in
+  :line: 23
+  :message: ''
+- :test: test_OperatorByID_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in
+  :line: 31
+  :message: ''
+- :test: test_OperatorByID_should_not_print_out_due_to_the_operator_is_not_in_the_table
+  :line: 38
+  :message: ''
+- :test: test_OperatorByName_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in
+  :line: 44
+  :message: ''
+- :test: test_OperatorByName_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in
+  :line: 51
+  :message: ''
+- :test: test_OperatorByName_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in
+  :line: 58
+  :message: ''
+- :test: test_OperatorByName_should_not_print_out_UNKNOWN_OP_details_due_to_UNKNOWN_OP_parameter_is_passed_in
+  :line: 66
+  :message: ''
+- :test: test_executeAdd_whether_it_can_push_two_number_in_and_pop_out
+  :line: 72
+  :message: ''
+:failures:
+- :test: test_executeAdd_after_push_an_operator_type_should_throw_an_exception
+  :line: 96
+  :message: Should have throw an exception due to incomplete number!
+:ignores: []
+:counts:
+  :total: 10
+  :passed: 9
+  :failed: 1
+  :ignored: 0
+:stdout:
+- Number Token = 3
