@@ -4,43 +4,55 @@
   :file: test_Operator.c
 :successes:
 - :test: test_OperatorByID_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in
-  :line: 17
+  :line: 16
   :message: ''
 - :test: test_OperatorByID_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in
-  :line: 24
+  :line: 23
   :message: ''
 - :test: test_OperatorByID_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in
-  :line: 32
+  :line: 31
   :message: ''
 - :test: test_OperatorByID_should_not_print_out_due_to_the_operator_is_not_in_the_table
-  :line: 39
+  :line: 38
   :message: ''
 - :test: test_OperatorByName_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in
-  :line: 45
+  :line: 44
   :message: ''
 - :test: test_OperatorByName_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in
-  :line: 52
+  :line: 51
   :message: ''
 - :test: test_OperatorByName_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in
-  :line: 59
+  :line: 58
   :message: ''
 - :test: test_OperatorByName_should_not_print_out_UNKNOWN_OP_details_due_to_UNKNOWN_OP_parameter_is_passed_in
-  :line: 67
+  :line: 66
   :message: ''
 - :test: test_executeAdd_whether_it_can_push_two_number_in_and_pop_out
-  :line: 73
+  :line: 72
   :message: ''
 - :test: test_executeAdd_after_push_an_operator_type_should_throw_an_exception
-  :line: 89
+  :line: 85
   :message: ''
 - :test: test_executeAdd_will_throw_an_exception_if_the_first_or_second_popResult_is_NULL
-  :line: 110
+  :line: 105
+  :message: ''
+- :test: test_executeAdd_after_push_the_value_4_and_5_it_should_pop_out_the_result_9
+  :line: 124
+  :message: ''
+- :test: test_executeSub_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
+  :line: 140
+  :message: ''
+- :test: test_executeSub_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
+  :line: 160
+  :message: ''
+- :test: test_executeSub_after_integer_5_and_4_pop_out_it_should_return_1
+  :line: 179
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 11
-  :passed: 11
+  :total: 15
+  :passed: 15
   :failed: 0
   :ignored: 0
 :stdout:
@@ -49,3 +61,12 @@
 - Operator Token = +
 - Number Token = 2
 - token is NULL
+- Number Token = 5
+- Number Token = 4
+- 'result: 9'
+- Operator Token = -
+- Number Token = 2
+- token is NULL
+- Number Token = 4
+- Number Token = 5
+- 'result: 1'

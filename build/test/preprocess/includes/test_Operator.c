@@ -7,5 +7,4 @@
 - Stack.h
 - Token.h
 - TokenDebug.h
-- mock_Token.h
 - unity.h

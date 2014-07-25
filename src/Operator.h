@@ -5,10 +5,10 @@
 #include "Stack.h"
 #include "ErrorCode.h"
 
-int executeAdd(Stack *dataStack);
-int executeSub(Stack *stack);
-int executeMul(Stack *stack);
-int executeNPercent(Stack *stack);
+void executeAdd(Stack *dataStack);
+void executeSub(Stack *stack);
+void executeMul(Stack *stack);
+void executeNPercent(Stack *stack);
 
 
 #endif // Operator_H

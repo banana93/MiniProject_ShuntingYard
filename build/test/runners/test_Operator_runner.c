@@ -10,13 +10,10 @@
   { \
     CEXCEPTION_T e; \
     Try { \
-      CMock_Init(); \
       setUp(); \
       TestFunc(); \
-      CMock_Verify(); \
     } Catch(e) { TEST_ASSERT_EQUAL_HEX32_MESSAGE(CEXCEPTION_NONE, e, "Unhandled Exception!"); } \
   } \
-  CMock_Destroy(); \
   if (TEST_PROTECT() && !TEST_IS_IGNORED) \
   { \
     tearDown(); \
@@ -26,11 +23,9 @@
 
 //=======Automagically Detected Files To Include=====
 #include "unity.h"
-#include "cmock.h"
 #include <setjmp.h>
 #include <stdio.h>
 #include "CException.h"
-#include "mock_Token.h"
 
 int GlobalExpectCount;
 int GlobalVerifyOrder;
@@ -50,32 +45,16 @@ extern void test_OperatorByName_should_not_print_out_UNKNOWN_OP_details_due_to_U
 extern void test_executeAdd_whether_it_can_push_two_number_in_and_pop_out(void);
 extern void test_executeAdd_after_push_an_operator_type_should_throw_an_exception(void);
 extern void test_executeAdd_will_throw_an_exception_if_the_first_or_second_popResult_is_NULL(void);
+extern void test_executeAdd_after_push_the_value_4_and_5_it_should_pop_out_the_result_9(void);
+extern void test_executeSub_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception(void);
+extern void test_executeSub_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL(void);
+extern void test_executeSub_after_integer_5_and_4_pop_out_it_should_return_1(void);
 
-
-//=======Mock Management=====
-static void CMock_Init(void)
-{
-  GlobalExpectCount = 0;
-  GlobalVerifyOrder = 0;
-  GlobalOrderError = NULL;
-  mock_Token_Init();
-}
-static void CMock_Verify(void)
-{
-  mock_Token_Verify();
-}
-static void CMock_Destroy(void)
-{
-  mock_Token_Destroy();
-}
 
 //=======Test Reset Option=====
 void resetTest()
 {
-  CMock_Verify();
-  CMock_Destroy();
   tearDown();
-  CMock_Init();
   setUp();
 }
 
@@ -85,17 +64,21 @@ int main(void)
 {
   Unity.TestFile = "test_Operator.c";
   UnityBegin();
-  RUN_TEST(test_OperatorByID_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in, 17);
-  RUN_TEST(test_OperatorByID_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in, 24);
-  RUN_TEST(test_OperatorByID_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in, 32);
-  RUN_TEST(test_OperatorByID_should_not_print_out_due_to_the_operator_is_not_in_the_table, 39);
-  RUN_TEST(test_OperatorByName_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in, 45);
-  RUN_TEST(test_OperatorByName_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in, 52);
-  RUN_TEST(test_OperatorByName_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in, 59);
-  RUN_TEST(test_OperatorByName_should_not_print_out_UNKNOWN_OP_details_due_to_UNKNOWN_OP_parameter_is_passed_in, 67);
-  RUN_TEST(test_executeAdd_whether_it_can_push_two_number_in_and_pop_out, 73);
-  RUN_TEST(test_executeAdd_after_push_an_operator_type_should_throw_an_exception, 89);
-  RUN_TEST(test_executeAdd_will_throw_an_exception_if_the_first_or_second_popResult_is_NULL, 110);
+  RUN_TEST(test_OperatorByID_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in, 16);
+  RUN_TEST(test_OperatorByID_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in, 23);
+  RUN_TEST(test_OperatorByID_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in, 31);
+  RUN_TEST(test_OperatorByID_should_not_print_out_due_to_the_operator_is_not_in_the_table, 38);
+  RUN_TEST(test_OperatorByName_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in, 44);
+  RUN_TEST(test_OperatorByName_should_print_out_DIV_OP_details_due_to_DIV_OP_parameter_is_passed_in, 51);
+  RUN_TEST(test_OperatorByName_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_OP_parameter_is_passed_in, 58);
+  RUN_TEST(test_OperatorByName_should_not_print_out_UNKNOWN_OP_details_due_to_UNKNOWN_OP_parameter_is_passed_in, 66);
+  RUN_TEST(test_executeAdd_whether_it_can_push_two_number_in_and_pop_out, 72);
+  RUN_TEST(test_executeAdd_after_push_an_operator_type_should_throw_an_exception, 85);
+  RUN_TEST(test_executeAdd_will_throw_an_exception_if_the_first_or_second_popResult_is_NULL, 105);
+  RUN_TEST(test_executeAdd_after_push_the_value_4_and_5_it_should_pop_out_the_result_9, 124);
+  RUN_TEST(test_executeSub_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception, 140);
+  RUN_TEST(test_executeSub_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL, 160);
+  RUN_TEST(test_executeSub_after_integer_5_and_4_pop_out_it_should_return_1, 179);
 
   return (UnityEnd());
 }

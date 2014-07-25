@@ -1,6 +1,5 @@
 #include "unity.h"
 #include "Operator.h"
-#include "mock_Token.h"
 #include <stdio.h>
 #include "Stack.h"
 #include "Token.h"
@@ -73,23 +72,19 @@ void test_OperatorByName_should_not_print_out_UNKNOWN_OP_details_due_to_UNKNOWN_
 void test_executeAdd_whether_it_can_push_two_number_in_and_pop_out(void)
 {
 	Stack *stack = stackNew(10);
-	int result;
 	Number *value1 = numberNew(2);
 	Number *value2 = numberNew(3);
 	
 	stackPush(stack, value1);
 	stackPush(stack, value2);
 	
-
-	result = executeAdd(stack);
-	TEST_ASSERT_EQUAL(5, result);
+	executeAdd(stack);
 	stackDel(stack);
 }
 
 void test_executeAdd_after_push_an_operator_type_should_throw_an_exception(void)
 {
 	Stack *stack = stackNew(10);
-	int result;
 	Operator *operator;
 	operator = operatorNewByID(ADD_OP);
 	CEXCEPTION_T err;
@@ -97,7 +92,7 @@ void test_executeAdd_after_push_an_operator_type_should_throw_an_exception(void)
 	Try
 	{
 		stackPush(stack, operator);
-		result = executeAdd(stack);
+		executeAdd(stack);
 		TEST_FAIL_MESSAGE("Should have throw an exception due to it is not a number token!");
 	}
 	Catch(err)
@@ -110,14 +105,13 @@ void test_executeAdd_after_push_an_operator_type_should_throw_an_exception(void)
 void test_executeAdd_will_throw_an_exception_if_the_first_or_second_popResult_is_NULL(void)
 {
 	Stack *stack = stackNew(10);
-	int result;
 	Number *value1 = numberNew(2);
 	CEXCEPTION_T err;
 	
 	Try
 	{
 		stackPush(stack, value1);
-		result = executeAdd(stack);
+		executeAdd(stack);
 		TEST_FAIL_MESSAGE("Should have throw an exception due to incomplete number");
 	}
 	Catch(err)
@@ -127,4 +121,76 @@ void test_executeAdd_will_throw_an_exception_if_the_first_or_second_popResult_is
 	stackDel(stack);
 }
 
+void test_executeAdd_after_push_the_value_4_and_5_it_should_pop_out_the_result_9(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(4);
+	Number *value2 = numberNew(5);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeAdd(stack);
+	result = (Number *)stackPop(stack);
+	printf("result: %d\n", result->value);
+	stackDel(stack);
+}
+
+void test_executeSub_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception(void)
+{
+	Stack *stack = stackNew(10);
+	Operator *operator;
+	operator = operatorNewByID(SUB_OP);
+	CEXCEPTION_T err;
+	
+	Try
+	{
+		stackPush(stack, operator);
+		executeSub(stack);
+		TEST_FAIL_MESSAGE("Should have throw an exception due to it is not a number token!");
+	}
+	Catch(err)
+	{
+		TEST_ASSERT_EQUAL_MESSAGE(ERR_NOT_NUMBER_TOKEN, err, "Expect ERR_NOT_NUMBER_TOKEN exception");
+	}
+	stackDel(stack);
+}
+
+void test_executeSub_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL(void)
+{
+	Stack *stack = stackNew(10);
+	Number *value1 = numberNew(2);
+	CEXCEPTION_T err;
+	
+	Try
+	{
+		stackPush(stack, value1);
+		executeSub(stack);
+		TEST_FAIL_MESSAGE("Should have throw an exception due to incomplete number");
+	}
+	Catch(err)
+	{
+		TEST_ASSERT_EQUAL_MESSAGE(ERR_INCOMPLETE_NUMBER, err, "Expect ERR_INCOMPLETE_NUMBER exception");
+	}
+	stackDel(stack);
+}
+
+void test_executeSub_after_integer_5_and_4_pop_out_it_should_return_1(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(5);
+	Number *value2 = numberNew(4);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeSub(stack);
+	result = (Number *)stackPop(stack);
+	printf("result: %d\n", result->value);
+	stackDel(stack);
+}
+
+// void test_executeMul_
 
