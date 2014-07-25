@@ -48,7 +48,10 @@ extern void test_executeAdd_will_throw_an_exception_if_the_first_or_second_popRe
 extern void test_executeAdd_after_push_the_value_4_and_5_it_should_pop_out_the_result_9(void);
 extern void test_executeSub_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception(void);
 extern void test_executeSub_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL(void);
-extern void test_executeSub_after_integer_5_and_4_pop_out_it_should_return_1(void);
+extern void test_executeSub_after_integer_5_and_4_processed_it_should_return_1(void);
+extern void test_executeMul_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception(void);
+extern void test_executeMul_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL(void);
+extern void test_executeMul_after_integer_2_and_1_is_processed_it_should_return_2(void);
 
 
 //=======Test Reset Option=====
@@ -78,7 +81,10 @@ int main(void)
   RUN_TEST(test_executeAdd_after_push_the_value_4_and_5_it_should_pop_out_the_result_9, 124);
   RUN_TEST(test_executeSub_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception, 140);
   RUN_TEST(test_executeSub_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL, 160);
-  RUN_TEST(test_executeSub_after_integer_5_and_4_pop_out_it_should_return_1, 179);
+  RUN_TEST(test_executeSub_after_integer_5_and_4_processed_it_should_return_1, 179);
+  RUN_TEST(test_executeMul_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception, 195);
+  RUN_TEST(test_executeMul_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL, 215);
+  RUN_TEST(test_executeMul_after_integer_2_and_1_is_processed_it_should_return_2, 234);
 
   return (UnityEnd());
 }

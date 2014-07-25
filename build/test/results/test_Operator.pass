@@ -45,28 +45,43 @@
 - :test: test_executeSub_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
   :line: 160
   :message: ''
-- :test: test_executeSub_after_integer_5_and_4_pop_out_it_should_return_1
+- :test: test_executeSub_after_integer_5_and_4_processed_it_should_return_1
   :line: 179
+  :message: ''
+- :test: test_executeMul_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
+  :line: 195
+  :message: ''
+- :test: test_executeMul_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
+  :line: 215
+  :message: ''
+- :test: test_executeMul_after_integer_2_and_1_is_processed_it_should_return_2
+  :line: 234
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 15
-  :passed: 15
+  :total: 18
+  :passed: 18
   :failed: 0
   :ignored: 0
 :stdout:
 - Number Token = 3
 - Number Token = 2
 - Operator Token = +
-- Number Token = 2
+- Number Token = 1
 - token is NULL
 - Number Token = 5
 - Number Token = 4
 - 'result: 9'
 - Operator Token = -
-- Number Token = 2
+- Number Token = 6
 - token is NULL
 - Number Token = 4
 - Number Token = 5
 - 'result: 1'
+- Operator Token = *
+- Number Token = 7
+- token is NULL
+- Number Token = 1
+- Number Token = 2
+- 'result: 2'
