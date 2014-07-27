@@ -69,19 +69,6 @@ void test_OperatorByName_should_not_print_out_UNKNOWN_OP_details_due_to_UNKNOWN_
 	TEST_ASSERT_NULL(info);
 }
 
-void test_executeAdd_whether_it_can_push_two_number_in_and_pop_out(void)
-{
-	Stack *stack = stackNew(10);
-	Number *value1 = numberNew(2);
-	Number *value2 = numberNew(3);
-	
-	stackPush(stack, value1);
-	stackPush(stack, value2);
-	
-	executeAdd(stack);
-	stackDel(stack);
-}
-
 void test_executeAdd_after_push_an_operator_type_should_throw_an_exception(void)
 {
 	Stack *stack = stackNew(10);
@@ -242,6 +229,61 @@ void test_executeMul_after_integer_2_and_1_is_processed_it_should_return_2(void)
 	stackPush(stack, value2);
 	
 	executeMul(stack);
+	result = (Number *)stackPop(stack);
+	printf("result: %d\n", result->value);
+	stackDel(stack);
+}
+
+void test_executeModulo_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception(void)
+{
+	Stack *stack = stackNew(10);
+	Operator *operator;
+	operator = operatorNewByID(NPERCENT_OP);
+	CEXCEPTION_T err;
+	
+	Try
+	{
+		stackPush(stack, operator);
+		executeModulo(stack);
+		TEST_FAIL_MESSAGE("Should have throw an exception due to it is not a number token!");
+	}
+	Catch(err)
+	{
+		TEST_ASSERT_EQUAL_MESSAGE(ERR_NOT_NUMBER_TOKEN, err, "Expect ERR_NOT_NUMBER_TOKEN exception");
+	}
+	stackDel(stack);
+}
+
+void test_executeModulo_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL(void)
+{
+	Stack *stack = stackNew(10);
+	Number *value1 = numberNew(7);
+	CEXCEPTION_T err;
+	
+	Try
+	{
+		stackPush(stack, value1);
+		executeModulo(stack);
+		TEST_FAIL_MESSAGE("Should have throw an exception due to incomplete number");
+	}
+	Catch(err)
+	{
+		TEST_ASSERT_EQUAL_MESSAGE(ERR_INCOMPLETE_NUMBER, err, "Expect ERR_INCOMPLETE_NUMBER exception");
+	}
+	stackDel(stack);
+}
+
+void test_executeModulo_after_integer_2_and_1_is_processed_it_should_return_2(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(1);
+	Number *value2 = numberNew(2);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeModulo(stack);
 	result = (Number *)stackPop(stack);
 	printf("result: %d\n", result->value);
 	stackDel(stack);

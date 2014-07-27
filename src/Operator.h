@@ -8,7 +8,7 @@
 void executeAdd(Stack *dataStack);
 void executeSub(Stack *stack);
 void executeMul(Stack *stack);
-void executeNPercent(Stack *stack);
+void executeModulo(Stack *stack);
 
 
 #endif // Operator_H
