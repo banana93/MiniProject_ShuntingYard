@@ -27,46 +27,104 @@
 - :test: test_OperatorByName_should_not_print_out_UNKNOWN_OP_details_due_to_UNKNOWN_OP_parameter_is_passed_in
   :line: 66
   :message: ''
-- :test: test_executeAdd_whether_it_can_push_two_number_in_and_pop_out
+- :test: test_executeAdd_after_push_an_operator_type_should_throw_an_exception
   :line: 72
   :message: ''
-- :test: test_executeAdd_after_push_an_operator_type_should_throw_an_exception
-  :line: 85
-  :message: ''
 - :test: test_executeAdd_will_throw_an_exception_if_the_first_or_second_popResult_is_NULL
-  :line: 105
+  :line: 92
   :message: ''
 - :test: test_executeAdd_after_push_the_value_4_and_5_it_should_pop_out_the_result_9
-  :line: 124
+  :line: 111
   :message: ''
 - :test: test_executeSub_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
-  :line: 140
+  :line: 127
   :message: ''
 - :test: test_executeSub_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
-  :line: 160
+  :line: 147
   :message: ''
 - :test: test_executeSub_after_integer_5_and_4_processed_it_should_return_1
-  :line: 179
+  :line: 166
   :message: ''
 - :test: test_executeMul_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
-  :line: 195
+  :line: 182
   :message: ''
 - :test: test_executeMul_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
-  :line: 215
+  :line: 202
   :message: ''
 - :test: test_executeMul_after_integer_2_and_1_is_processed_it_should_return_2
-  :line: 234
+  :line: 221
+  :message: ''
+- :test: test_executeModulo_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
+  :line: 237
+  :message: ''
+- :test: test_executeModulo_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
+  :line: 257
+  :message: ''
+- :test: test_executeModulo_after_integer_1_and_2_is_processed_it_should_return_1
+  :line: 276
+  :message: ''
+- :test: test_executeDiv_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
+  :line: 292
+  :message: ''
+- :test: test_executeDiv_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
+  :line: 312
+  :message: ''
+- :test: test_executeDiv_after_integer_2_and_2_is_processed_it_should_return_1
+  :line: 331
+  :message: ''
+- :test: test_executeOr_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
+  :line: 347
+  :message: ''
+- :test: test_executeOr_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
+  :line: 367
+  :message: ''
+- :test: test_executeOr_after_integer_1_and_7_is_processed_it_should_return_7
+  :line: 386
+  :message: ''
+- :test: test_executeXor_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
+  :line: 402
+  :message: ''
+- :test: test_executeXor_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
+  :line: 422
+  :message: ''
+- :test: test_executeXor_after_integer_2_and_5_is_processed_it_should_return_7
+  :line: 441
+  :message: ''
+- :test: test_executeAnd_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
+  :line: 457
+  :message: ''
+- :test: test_executeAnd_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
+  :line: 477
+  :message: ''
+- :test: test_executeAnd_after_integer_2_and_5_is_processed_it_should_return_7
+  :line: 496
+  :message: ''
+- :test: test_executeBitAnd_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
+  :line: 512
+  :message: ''
+- :test: test_executeBitAnd_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
+  :line: 532
+  :message: ''
+- :test: test_executeBitAnd_after_integer_2_and_3_is_processed_it_should_return_2
+  :line: 551
+  :message: ''
+- :test: test_executeBitOr_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
+  :line: 567
+  :message: ''
+- :test: test_executeBitOr_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
+  :line: 587
+  :message: ''
+- :test: test_executeBitOr_after_integer_14_and_1_is_processed_it_should_return_15
+  :line: 606
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 18
-  :passed: 18
+  :total: 38
+  :passed: 38
   :failed: 0
   :ignored: 0
 :stdout:
-- Number Token = 3
-- Number Token = 2
 - Operator Token = +
 - Number Token = 1
 - token is NULL
@@ -74,14 +132,56 @@
 - Number Token = 4
 - 'result: 9'
 - Operator Token = -
-- Number Token = 6
+- Number Token = 2
 - token is NULL
 - Number Token = 4
 - Number Token = 5
 - 'result: 1'
 - Operator Token = *
-- Number Token = 7
+- Number Token = 3
 - token is NULL
 - Number Token = 1
 - Number Token = 2
 - 'result: 2'
+- Operator Token = %
+- Number Token = 4
+- token is NULL
+- Number Token = 2
+- Number Token = 1
+- 'result: 1'
+- Operator Token = /
+- Number Token = 5
+- token is NULL
+- Number Token = 2
+- Number Token = 2
+- 'result: 1'
+- Operator Token = ||
+- Number Token = 6
+- token is NULL
+- Number Token = 7
+- Number Token = 1
+- 'result: 1'
+- Operator Token = ^
+- Number Token = 7
+- token is NULL
+- Number Token = 5
+- Number Token = 2
+- 'result: 7'
+- Operator Token = &&
+- Number Token = 8
+- token is NULL
+- Number Token = 5
+- Number Token = 2
+- 'result: 1'
+- Operator Token = &
+- Number Token = 9
+- token is NULL
+- Number Token = 3
+- Number Token = 2
+- 'result: 2'
+- Operator Token = |
+- Number Token = 10
+- token is NULL
+- Number Token = 1
+- Number Token = 14
+- 'result: 15'

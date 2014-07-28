@@ -11,5 +11,9 @@ void executeMul(Stack *dataStack);
 void executeModulo(Stack *dataStack);
 void executeDiv(Stack *dataStack);
 void executeOr(Stack *dataStack);
+void executeXor(Stack *dataStack);
+void executeAnd(Stack *dataStack);
+void executeBitAnd(Stack *dataStack);
+void executeBitOr(Stack *dataStack);
 
 #endif // Operator_H
