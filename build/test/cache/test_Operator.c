@@ -539,7 +539,7 @@ void test_executeModulo_it_should_throw_an_exception_due_to_either_first_or_seco
 
 
 
-void test_executeModulo_after_integer_2_and_1_is_processed_it_should_return_2(void)
+void test_executeModulo_after_integer_1_and_2_is_processed_it_should_return_1(void)
 
 {
 
@@ -560,6 +560,226 @@ void test_executeModulo_after_integer_2_and_1_is_processed_it_should_return_2(vo
 
 
  executeModulo(stack);
+
+ result = (Number *)stackPop(stack);
+
+ printf("result: %d\n", result->value);
+
+ stackDel(stack);
+
+}
+
+
+
+void test_executeDiv_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception(void)
+
+{
+
+ Stack *stack = stackNew(10);
+
+ Operator *operator;
+
+ operator = operatorNewByID(DIV_OP);
+
+ unsigned int err;
+
+
+
+ { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
+
+ {
+
+  stackPush(stack, operator);
+
+  executeDiv(stack);
+
+  UnityFail( ("Should have throw an exception due to it is not a number token!"), (_U_UINT)303);;
+
+ }
+
+ else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A))
+
+ {
+
+  UnityAssertEqualNumber((_U_SINT)((ERR_NOT_NUMBER_TOKEN)), (_U_SINT)((err)), ("Expect ERR_NOT_NUMBER_TOKEN exception"), (_U_UINT)307, UNITY_DISPLAY_STYLE_INT);
+
+ }
+
+ stackDel(stack);
+
+}
+
+
+
+void test_executeDiv_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL(void)
+
+{
+
+ Stack *stack = stackNew(10);
+
+ Number *value1 = numberNew(7);
+
+ unsigned int err;
+
+
+
+ { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
+
+ {
+
+  stackPush(stack, value1);
+
+  executeDiv(stack);
+
+  UnityFail( ("Should have throw an exception due to incomplete number"), (_U_UINT)322);;
+
+ }
+
+ else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A))
+
+ {
+
+  UnityAssertEqualNumber((_U_SINT)((ERR_INCOMPLETE_NUMBER)), (_U_SINT)((err)), ("Expect ERR_INCOMPLETE_NUMBER exception"), (_U_UINT)326, UNITY_DISPLAY_STYLE_INT);
+
+ }
+
+ stackDel(stack);
+
+}
+
+
+
+void test_executeDiv_after_integer_2_and_2_is_processed_it_should_return_1(void)
+
+{
+
+ Stack *stack = stackNew(10);
+
+ Number *result;
+
+ Number *value1 = numberNew(2);
+
+ Number *value2 = numberNew(2);
+
+
+
+ stackPush(stack, value1);
+
+ stackPush(stack, value2);
+
+
+
+ executeDiv(stack);
+
+ result = (Number *)stackPop(stack);
+
+ printf("result: %d\n", result->value);
+
+ stackDel(stack);
+
+}
+
+
+
+void test_executeOr_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception(void)
+
+{
+
+ Stack *stack = stackNew(10);
+
+ Operator *operator;
+
+ operator = operatorNewByID(OR_OP);
+
+ unsigned int err;
+
+
+
+ { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
+
+ {
+
+  stackPush(stack, operator);
+
+  executeOr(stack);
+
+  UnityFail( ("Should have throw an exception due to it is not a number token!"), (_U_UINT)358);;
+
+ }
+
+ else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A))
+
+ {
+
+  UnityAssertEqualNumber((_U_SINT)((ERR_NOT_NUMBER_TOKEN)), (_U_SINT)((err)), ("Expect ERR_NOT_NUMBER_TOKEN exception"), (_U_UINT)362, UNITY_DISPLAY_STYLE_INT);
+
+ }
+
+ stackDel(stack);
+
+}
+
+
+
+void test_executeOr_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL(void)
+
+{
+
+ Stack *stack = stackNew(10);
+
+ Number *value1 = numberNew(7);
+
+ unsigned int err;
+
+
+
+ { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
+
+ {
+
+  stackPush(stack, value1);
+
+  executeOr(stack);
+
+  UnityFail( ("Should have throw an exception due to incomplete number"), (_U_UINT)377);;
+
+ }
+
+ else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A))
+
+ {
+
+  UnityAssertEqualNumber((_U_SINT)((ERR_INCOMPLETE_NUMBER)), (_U_SINT)((err)), ("Expect ERR_INCOMPLETE_NUMBER exception"), (_U_UINT)381, UNITY_DISPLAY_STYLE_INT);
+
+ }
+
+ stackDel(stack);
+
+}
+
+
+
+void test_executeOr_after_integer_1_and_7_is_processed_it_should_return_7(void)
+
+{
+
+ Stack *stack = stackNew(10);
+
+ Number *result;
+
+ Number *value1 = numberNew(1);
+
+ Number *value2 = numberNew(1);
+
+
+
+ stackPush(stack, value1);
+
+ stackPush(stack, value2);
+
+
+
+ executeOr(stack);
 
  result = (Number *)stackPop(stack);
 

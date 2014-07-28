@@ -51,8 +51,26 @@
 - :test: test_executeModulo_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
   :line: 257
   :message: ''
-- :test: test_executeModulo_after_integer_2_and_1_is_processed_it_should_return_2
+- :test: test_executeModulo_after_integer_1_and_2_is_processed_it_should_return_1
   :line: 276
+  :message: ''
+- :test: test_executeDiv_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
+  :line: 292
+  :message: ''
+- :test: test_executeDiv_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
+  :line: 312
+  :message: ''
+- :test: test_executeDiv_after_integer_2_and_2_is_processed_it_should_return_1
+  :line: 331
+  :message: ''
+- :test: test_executeOr_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception
+  :line: 347
+  :message: ''
+- :test: test_executeOr_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL
+  :line: 367
+  :message: ''
+- :test: test_executeOr_after_integer_1_and_7_is_processed_it_should_return_7
+  :line: 386
   :message: ''
 :failures:
 - :test: test_OperatorByID_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in
@@ -66,8 +84,8 @@
   :message: Expected Non-NULL
 :ignores: []
 :counts:
-  :total: 20
-  :passed: 17
+  :total: 26
+  :passed: 23
   :failed: 3
   :ignored: 0
 :stdout:
@@ -93,5 +111,17 @@
 - Number Token = 7
 - token is NULL
 - Number Token = 2
+- Number Token = 1
+- 'result: 1'
+- Operator Token = /
+- Number Token = 7
+- token is NULL
+- Number Token = 2
+- Number Token = 2
+- 'result: 1'
+- Operator Token = ||
+- Number Token = 7
+- token is NULL
+- Number Token = 1
 - Number Token = 1
 - 'result: 1'

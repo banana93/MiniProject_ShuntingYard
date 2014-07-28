@@ -53,7 +53,13 @@ extern void test_executeMul_it_should_throw_an_exception_due_to_either_first_or_
 extern void test_executeMul_after_integer_2_and_1_is_processed_it_should_return_2(void);
 extern void test_executeModulo_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception(void);
 extern void test_executeModulo_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL(void);
-extern void test_executeModulo_after_integer_2_and_1_is_processed_it_should_return_2(void);
+extern void test_executeModulo_after_integer_1_and_2_is_processed_it_should_return_1(void);
+extern void test_executeDiv_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception(void);
+extern void test_executeDiv_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL(void);
+extern void test_executeDiv_after_integer_2_and_2_is_processed_it_should_return_1(void);
+extern void test_executeOr_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception(void);
+extern void test_executeOr_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL(void);
+extern void test_executeOr_after_integer_1_and_7_is_processed_it_should_return_7(void);
 
 
 //=======Test Reset Option=====
@@ -88,7 +94,13 @@ int main(void)
   RUN_TEST(test_executeMul_after_integer_2_and_1_is_processed_it_should_return_2, 221);
   RUN_TEST(test_executeModulo_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception, 237);
   RUN_TEST(test_executeModulo_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL, 257);
-  RUN_TEST(test_executeModulo_after_integer_2_and_1_is_processed_it_should_return_2, 276);
+  RUN_TEST(test_executeModulo_after_integer_1_and_2_is_processed_it_should_return_1, 276);
+  RUN_TEST(test_executeDiv_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception, 292);
+  RUN_TEST(test_executeDiv_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL, 312);
+  RUN_TEST(test_executeDiv_after_integer_2_and_2_is_processed_it_should_return_1, 331);
+  RUN_TEST(test_executeOr_after_an_operator_ID_is_pushed_in_it_should_throw_an_exception, 347);
+  RUN_TEST(test_executeOr_it_should_throw_an_exception_due_to_either_first_or_second_pop_result_is_NULL, 367);
+  RUN_TEST(test_executeOr_after_integer_1_and_7_is_processed_it_should_return_7, 386);
 
   return (UnityEnd());
 }

@@ -6,9 +6,10 @@
 #include "ErrorCode.h"
 
 void executeAdd(Stack *dataStack);
-void executeSub(Stack *stack);
-void executeMul(Stack *stack);
-void executeModulo(Stack *stack);
-
+void executeSub(Stack *dataStack);
+void executeMul(Stack *dataStack);
+void executeModulo(Stack *dataStack);
+void executeDiv(Stack *dataStack);
+void executeOr(Stack *dataStack);
 
 #endif // Operator_H
