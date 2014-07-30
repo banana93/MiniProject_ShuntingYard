@@ -10,6 +10,14 @@
 #include "CException.h"
 #include "ErrorCode.h"
 
+/*
+	This function will perform addition
+	Input:
+	left and right
+		This two input will receive the pop result from the number structure.
+	Output:
+		after the left and right is being processed it will push the result back into the stackPop
+*/
 void executeAdd(Stack *dataStack)
 {
 	Number *left;
@@ -44,6 +52,14 @@ void executeAdd(Stack *dataStack)
 	stackPush(dataStack, answer);	
 }
 
+/*
+	This function will perform subtraction
+	Input:
+	left and right
+		This two input will receive the pop result from the number structure.
+	Output:
+		after the left and right is being processed it will push the result back into the stackPop
+*/
 void executeSub(Stack *dataStack)
 {
 	Number *left;
@@ -78,6 +94,14 @@ void executeSub(Stack *dataStack)
 	stackPush(dataStack, answer);	
 }
 
+/*
+	This function will perform multiplication
+	Input:
+	left and right
+		This two input will receive the pop result from the number structure.
+	Output:
+		after the left and right is being processed it will push the result back into the stackPop
+*/
 void executeMul(Stack *dataStack)
 {
 	Number *left;
@@ -112,6 +136,14 @@ void executeMul(Stack *dataStack)
 	stackPush(dataStack, answer);	
 }
 
+/*
+	This function will perform modulation
+	Input:
+	left and right
+		This two input will receive the pop result from the number structure.
+	Output:
+		after the left and right is being processed it will push the result back into the stackPop
+*/
 void executeModulo(Stack *dataStack)
 {
 	Number *left;
@@ -146,6 +178,14 @@ void executeModulo(Stack *dataStack)
 	stackPush(dataStack, answer);	
 }
 
+/*
+	This function will perform division
+	Input:
+	left and right
+		This two input will receive the pop result from the number structure.
+	Output:
+		after the left and right is being processed it will push the result back into the stackPop
+*/
 void executeDiv(Stack *dataStack)
 {
 	Number *left;
@@ -180,6 +220,14 @@ void executeDiv(Stack *dataStack)
 	stackPush(dataStack, answer);	
 }
 
+/*
+	This function will perform logical OR operation
+	Input:
+	left and right
+		This two input will receive the pop result from the number structure.
+	Output:
+		after the left and right is being processed it will push the result back into the stackPop
+*/
 void executeOr(Stack *dataStack)
 {
 	Number *left;
@@ -214,6 +262,14 @@ void executeOr(Stack *dataStack)
 	stackPush(dataStack, answer);	
 }
 
+/*
+	This function will perform XOR operation
+	Input:
+	left and right
+		This two input will receive the pop result from the number structure.
+	Output:
+		after the left and right is being processed it will push the result back into the stackPop
+*/
 void executeXor(Stack *dataStack)
 {
 	Number *left;
@@ -248,6 +304,14 @@ void executeXor(Stack *dataStack)
 	stackPush(dataStack, answer);	
 }
 
+/*
+	This function will perform logical AND operation
+	Input:
+	left and right
+		This two input will receive the pop result from the number structure.
+	Output:
+		after the left and right is being processed it will push the result back into the stackPop
+*/
 void executeAnd(Stack *dataStack)
 {
 	Number *left;
@@ -282,6 +346,14 @@ void executeAnd(Stack *dataStack)
 	stackPush(dataStack, answer);	
 }
 
+/*
+	This function will perform bitwise AND operation
+	Input:
+	left and right
+		This two input will receive the pop result from the number structure.
+	Output:
+		after the left and right is being processed it will push the result back into the stackPop
+*/
 void executeBitAnd(Stack *dataStack)
 {
 	Number *left;
@@ -316,6 +388,14 @@ void executeBitAnd(Stack *dataStack)
 	stackPush(dataStack, answer);	
 }
 
+/*
+	This function will perform bitwise OR operation
+	Input:
+	left and right
+		This two input will receive the pop result from the number structure.
+	Output:
+		after the left and right is being processed it will push the result back into the stackPop
+*/
 void executeBitOr(Stack *dataStack)
 {
 	Number *left;
