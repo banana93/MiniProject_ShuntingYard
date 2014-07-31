@@ -5,6 +5,8 @@
 #include "Stack.h"
 #include "ErrorCode.h"
 
+void getInfixValues(int *left, int *right, Stack *dataStack);
+void pushNewNumber(int result, Stack *dataStack);
 void executeAdd(Stack *dataStack);
 void executeSub(Stack *dataStack);
 void executeMul(Stack *dataStack);

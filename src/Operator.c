@@ -11,421 +11,167 @@
 #include "ErrorCode.h"
 
 /*
-	This function will perform addition
+	In this function, is the result that are Pop from the stack and store it in the 
+	numLeft and numRight first. Then this function will check whether the result that 
+	are pop-ed are NULL or not, or it is not a number token, and finally only store it into
+	the pointer that are pointing at the pop value.
+	
 	Input:
-	left and right
-		This two input will receive the pop result from the number structure.
+	- numLeft, numRight
+	
 	Output:
-		after the left and right is being processed it will push the result back into the stackPop
+	- left, right
 */
-void executeAdd(Stack *dataStack)
+void getInfixValues(int *left, int *right, Stack *dataStack)
 {
-	Number *left;
-	Number *right;
-	Number *answer;
-	int result = 0;
+	Number *numLeft;
+	Number *numRight;
 	
-	right = (Number *)stackPop(dataStack);
-	tokenDump((Token *)right);
+	numRight = (Number *)stackPop(dataStack);
+	tokenDump((Token *)numRight);
 	
-	if((Token *)right == NULL)
+	if((Token *)numRight == NULL)
 		Throw(ERR_INCOMPLETE_NUMBER);
 	
-	if(right->type != NUMBER_TOKEN)
+	if(numRight->type != NUMBER_TOKEN)
 		Throw(ERR_NOT_NUMBER_TOKEN);
 		
-	left = (Number *)stackPop(dataStack);
-	tokenDump((Token *)left);
+	numLeft = (Number *)stackPop(dataStack);
+	tokenDump((Token *)numLeft);
 	
-	if((Token *)left == NULL)
+	if((Token *)numLeft == NULL)
 		Throw(ERR_INCOMPLETE_NUMBER);
 		
-	if(left->type != NUMBER_TOKEN)
+	if(numLeft->type != NUMBER_TOKEN)
 		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	result = left->value + right->value;
 	
-	numberDel(left);
-	numberDel(right);
+	*left = numLeft->value;
+	*right = numRight->value;
 	
-	answer = numberNew(result);
-	stackPush(dataStack, answer);	
+	numberDel(numLeft);
+	numberDel(numRight);
 }
 
 /*
-	This function will perform subtraction
+	In this function basically is just create a new number token of he result that 
+	had been obtained and push it back into the stack.
+	
 	Input:
-	left and right
-		This two input will receive the pop result from the number structure.
-	Output:
-		after the left and right is being processed it will push the result back into the stackPop
+	- result
+*/
+void pushNewNumber(int result, Stack *dataStack)
+{
+	Number *answer;
+	answer = numberNew(result);
+	stackPush(dataStack, answer);
+}
+
+/*
+	This function will perform addition and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
+*/	
+void executeAdd(Stack *dataStack)
+{
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA + valueB, dataStack); 
+}
+
+/*
+	This function will perform subtraction and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
 */
 void executeSub(Stack *dataStack)
 {
-	Number *left;
-	Number *right;
-	Number *answer;
-	int result = 0;
-	
-	right = (Number *)stackPop(dataStack);
-	tokenDump((Token *)right);
-	
-	if((Token *)right == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-	
-	if(right->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	left = (Number *)stackPop(dataStack);
-	tokenDump((Token *)left);
-	
-	if((Token *)left == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-		
-	if(left->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	result = left->value - right->value;
-	
-	numberDel(left);
-	numberDel(right);
-	
-	answer = numberNew(result);
-	stackPush(dataStack, answer);	
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA - valueB, dataStack);
 }
 
 /*
-	This function will perform multiplication
-	Input:
-	left and right
-		This two input will receive the pop result from the number structure.
-	Output:
-		after the left and right is being processed it will push the result back into the stackPop
+	This function will perform multiplication and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
 */
 void executeMul(Stack *dataStack)
 {
-	Number *left;
-	Number *right;
-	Number *answer;
-	int result = 0;
-	
-	right = (Number *)stackPop(dataStack);
-	tokenDump((Token *)right);
-	
-	if((Token *)right == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-	
-	if(right->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	left = (Number *)stackPop(dataStack);
-	tokenDump((Token *)left);
-	
-	if((Token *)left == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-		
-	if(left->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	result = left->value * right->value;
-	
-	numberDel(left);
-	numberDel(right);
-	
-	answer = numberNew(result);
-	stackPush(dataStack, answer);	
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA * valueB, dataStack);
 }
 
 /*
-	This function will perform modulation
-	Input:
-	left and right
-		This two input will receive the pop result from the number structure.
-	Output:
-		after the left and right is being processed it will push the result back into the stackPop
+	This function will perform modulation and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
 */
 void executeModulo(Stack *dataStack)
 {
-	Number *left;
-	Number *right;
-	Number *answer;
-	int result = 0;
-	
-	right = (Number *)stackPop(dataStack);
-	tokenDump((Token *)right);
-	
-	if((Token *)right == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-	
-	if(right->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	left = (Number *)stackPop(dataStack);
-	tokenDump((Token *)left);
-	
-	if((Token *)left == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-		
-	if(left->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	result = left->value % right->value;
-	
-	numberDel(left);
-	numberDel(right);
-	
-	answer = numberNew(result);
-	stackPush(dataStack, answer);	
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA % valueB, dataStack);
 }
 
 /*
-	This function will perform division
-	Input:
-	left and right
-		This two input will receive the pop result from the number structure.
-	Output:
-		after the left and right is being processed it will push the result back into the stackPop
+	This function will perform division and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
 */
 void executeDiv(Stack *dataStack)
 {
-	Number *left;
-	Number *right;
-	Number *answer;
-	int result = 0;
-	
-	right = (Number *)stackPop(dataStack);
-	tokenDump((Token *)right);
-	
-	if((Token *)right == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-	
-	if(right->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	left = (Number *)stackPop(dataStack);
-	tokenDump((Token *)left);
-	
-	if((Token *)left == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-		
-	if(left->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	result = left->value / right->value;
-	
-	numberDel(left);
-	numberDel(right);
-	
-	answer = numberNew(result);
-	stackPush(dataStack, answer);	
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA / valueB, dataStack);
 }
 
 /*
-	This function will perform logical OR operation
-	Input:
-	left and right
-		This two input will receive the pop result from the number structure.
-	Output:
-		after the left and right is being processed it will push the result back into the stackPop
+	This function will perform logical OR operation and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
 */
 void executeOr(Stack *dataStack)
 {
-	Number *left;
-	Number *right;
-	Number *answer;
-	int result = 0;
-	
-	right = (Number *)stackPop(dataStack);
-	tokenDump((Token *)right);
-	
-	if((Token *)right == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-	
-	if(right->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	left = (Number *)stackPop(dataStack);
-	tokenDump((Token *)left);
-	
-	if((Token *)left == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-		
-	if(left->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	result = (left->value) || (right->value);
-	
-	numberDel(left);
-	numberDel(right);
-	
-	answer = numberNew(result);
-	stackPush(dataStack, answer);	
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA || valueB, dataStack);
 }
 
 /*
-	This function will perform XOR operation
-	Input:
-	left and right
-		This two input will receive the pop result from the number structure.
-	Output:
-		after the left and right is being processed it will push the result back into the stackPop
+	This function will perform XOR operation and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
 */
 void executeXor(Stack *dataStack)
 {
-	Number *left;
-	Number *right;
-	Number *answer;
-	int result = 0;
-	
-	right = (Number *)stackPop(dataStack);
-	tokenDump((Token *)right);
-	
-	if((Token *)right == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-	
-	if(right->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	left = (Number *)stackPop(dataStack);
-	tokenDump((Token *)left);
-	
-	if((Token *)left == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-		
-	if(left->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	result = (left->value) ^ (right->value);
-	
-	numberDel(left);
-	numberDel(right);
-	
-	answer = numberNew(result);
-	stackPush(dataStack, answer);	
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA ^ valueB, dataStack);
 }
 
 /*
-	This function will perform logical AND operation
-	Input:
-	left and right
-		This two input will receive the pop result from the number structure.
-	Output:
-		after the left and right is being processed it will push the result back into the stackPop
+	This function will perform logical AND operation and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
 */
 void executeAnd(Stack *dataStack)
 {
-	Number *left;
-	Number *right;
-	Number *answer;
-	int result = 0;
-	
-	right = (Number *)stackPop(dataStack);
-	tokenDump((Token *)right);
-	
-	if((Token *)right == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-	
-	if(right->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	left = (Number *)stackPop(dataStack);
-	tokenDump((Token *)left);
-	
-	if((Token *)left == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-		
-	if(left->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	result = (left->value) && (right->value);
-	
-	numberDel(left);
-	numberDel(right);
-	
-	answer = numberNew(result);
-	stackPush(dataStack, answer);	
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA && valueB, dataStack);
 }
 
 /*
-	This function will perform bitwise AND operation
-	Input:
-	left and right
-		This two input will receive the pop result from the number structure.
-	Output:
-		after the left and right is being processed it will push the result back into the stackPop
+	This function will perform bitwise AND operation and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
 */
 void executeBitAnd(Stack *dataStack)
 {
-	Number *left;
-	Number *right;
-	Number *answer;
-	int result = 0;
-	
-	right = (Number *)stackPop(dataStack);
-	tokenDump((Token *)right);
-	
-	if((Token *)right == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-	
-	if(right->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	left = (Number *)stackPop(dataStack);
-	tokenDump((Token *)left);
-	
-	if((Token *)left == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-		
-	if(left->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	result = (left->value) & (right->value);
-	
-	numberDel(left);
-	numberDel(right);
-	
-	answer = numberNew(result);
-	stackPush(dataStack, answer);	
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA & valueB, dataStack);
 }
 
 /*
-	This function will perform bitwise OR operation
-	Input:
-	left and right
-		This two input will receive the pop result from the number structure.
-	Output:
-		after the left and right is being processed it will push the result back into the stackPop
+	This function will perform bitwise OR operation and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
 */
 void executeBitOr(Stack *dataStack)
 {
-	Number *left;
-	Number *right;
-	Number *answer;
-	int result = 0;
-	
-	right = (Number *)stackPop(dataStack);
-	tokenDump((Token *)right);
-	
-	if((Token *)right == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-	
-	if(right->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	left = (Number *)stackPop(dataStack);
-	tokenDump((Token *)left);
-	
-	if((Token *)left == NULL)
-		Throw(ERR_INCOMPLETE_NUMBER);
-		
-	if(left->type != NUMBER_TOKEN)
-		Throw(ERR_NOT_NUMBER_TOKEN);
-		
-	result = (left->value) | (right->value);
-	
-	numberDel(left);
-	numberDel(right);
-	
-	answer = numberNew(result);
-	stackPush(dataStack, answer);	
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA | valueB, dataStack);
 }
