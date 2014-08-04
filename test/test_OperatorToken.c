@@ -17,7 +17,7 @@ void test_getOperatorByIDInSecondaryTable_after_ADD_OP_is_passed_in_it_should_re
 	TEST_ASSERT_EQUAL(100, info->precedence);
 }
 
-void test_getOperatorByIDInSecondaryTable_after_UNKNOWN_OP_is_passed_in_it_should_return_NULL(void)
+void test_getOperatorByIDInSecondaryTable_after_BITWISE_NOT_OP_is_passed_in_it_should_return_the_info_of_it(void)
 {
 	OperatorInfo *info = getOperatorByIDInSecondaryTable(BITWISE_NOT_OP);
 	TEST_ASSERT_NOT_NULL(info);

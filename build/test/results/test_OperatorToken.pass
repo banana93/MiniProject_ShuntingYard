@@ -1,0 +1,22 @@
+---
+:source:
+  :path: test
+  :file: test_OperatorToken.c
+:successes:
+- :test: test_getOperatorByIDInSecondaryTable_after_ADD_OP_is_passed_in_it_should_return_back_the_info_of_it
+  :line: 12
+  :message: ''
+- :test: test_getOperatorByIDInSecondaryTable_after_BITWISE_NOT_OP_is_passed_in_it_should_return_the_info_of_it
+  :line: 20
+  :message: ''
+- :test: test_getOperatorByIDInSecondaryTable_after_UNKNOWN_OP_is_passed_in_it_should_return_NULL
+  :line: 27
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 3
+  :passed: 3
+  :failed: 0
+  :ignored: 0
+:stdout: []
