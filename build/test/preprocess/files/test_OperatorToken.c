@@ -36,8 +36,22 @@ void test_getOperatorByIDInSecondaryTable_after_UNKNOWN_OP_is_passed_in_it_shoul
 
 {
 
+ OperatorInfo *info = getOperatorByIDInSecondaryTable(BITWISE_NOT_OP);
+
+ if ((((info)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)23);;};
+
+ UnityAssertEqualNumber((_U_SINT)((BITWISE_NOT_OP)), (_U_SINT)((info->id)), (((void *)0)), (_U_UINT)24, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_getOperatorByIDInSecondaryTable_after_UNKNOWN_OP_is_passed_in_it_should_return_NULL(void)
+
+{
+
  OperatorInfo *info = getOperatorByIDInSecondaryTable(UNKNOWN_OP);
 
- if ((((info)) == ((void *)0))) {} else {UnityFail( (" Expected NULL"), (_U_UINT)(_U_UINT)(_U_UINT)23);;};
+ if ((((info)) == ((void *)0))) {} else {UnityFail( (" Expected NULL"), (_U_UINT)(_U_UINT)(_U_UINT)30);;};
 
 }

@@ -123,12 +123,13 @@ OperatorInfo *getOperatorByName(char *name)
 OperatorInfo *getOperatorByIDInSecondaryTable(OperatorID id)
 {
 	int i = 0;
-	OperatorInfo *info = NULL;
+	OperatorInfo *info;
 	for(i; i < SECONDARY_TABLE_SIZE; i++)
 	{		
 		if(secondaryOperatorTable[i].id == id)
 			return &secondaryOperatorTable[i];
 	}
+	return NULL;
 }
 
 // Operator *operatorTryConvertToPrefix(Operator *operator)

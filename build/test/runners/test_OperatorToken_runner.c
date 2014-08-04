@@ -41,6 +41,7 @@ extern void setUp(void);
 extern void tearDown(void);
 extern void test_getOperatorByIDInSecondaryTable_after_ADD_OP_is_passed_in_it_should_return_back_the_info_of_it(void);
 extern void test_getOperatorByIDInSecondaryTable_after_UNKNOWN_OP_is_passed_in_it_should_return_NULL(void);
+extern void test_getOperatorByIDInSecondaryTable_after_UNKNOWN_OP_is_passed_in_it_should_return_NULL(void);
 
 
 //=======Mock Management=====
@@ -78,6 +79,7 @@ int main(void)
   UnityBegin();
   RUN_TEST(test_getOperatorByIDInSecondaryTable_after_ADD_OP_is_passed_in_it_should_return_back_the_info_of_it, 12);
   RUN_TEST(test_getOperatorByIDInSecondaryTable_after_UNKNOWN_OP_is_passed_in_it_should_return_NULL, 20);
+  RUN_TEST(test_getOperatorByIDInSecondaryTable_after_UNKNOWN_OP_is_passed_in_it_should_return_NULL, 27);
 
   return (UnityEnd());
 }

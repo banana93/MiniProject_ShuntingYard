@@ -51,6 +51,7 @@ typedef struct
 	int precedence;
 	AssocType associativity;
 	Affix affix;
+	int (*execute)(Stack *dataStack);
 }OperatorInfo;
 
 typedef struct
