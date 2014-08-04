@@ -2,6 +2,7 @@
 #define OperatorToken_H
 #include "Token.h"
 #include "Stack.h"
+#include "Operator.h"
 
 #define PRIMARY_TABLE_SIZE (sizeof(primaryOperatorTable)/sizeof(OperatorInfo))
 #define SECONDARY_TABLE_SIZE (sizeof(secondaryOperatorTable)/sizeof(OperatorInfo))
@@ -52,7 +53,7 @@ typedef struct
 	int precedence;
 	AssocType associativity;
 	Affix affix;
-	int(*execute)(Stack *dataStack);
+	void(*execute)(Stack *dataStack);
 }OperatorInfo;
 
 typedef struct

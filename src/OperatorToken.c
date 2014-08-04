@@ -1,26 +1,28 @@
 #include "OperatorToken.h"
 #include <malloc.h>
-
+#include "ErrorCode.h"
+#include "Operator.h"
+#include <stdio.h>
 
 /* Operator Table contain all the operator information
  */
 OperatorInfo primaryOperatorTable[] = 
 {
-	{.name = "*", 	.id = MUL_OP, 			.precedence = 80, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = "%", 	.id = NPERCENT_OP, 		.precedence = 80, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = "/", 	.id = DIV_OP, 			.precedence = 80, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = "+", 	.id = ADD_OP, 			.precedence = 70, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = "-", 	.id = SUB_OP, 			.precedence = 70, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = "<<", 	.id = BITWISE_SHIFT_LEFT_OP, 	.precedence = 68, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = ">>", 	.id = BITWISE_SHIFT_RIGHT_OP, 	.precedence = 68, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = "<", 	.id = LESSER_OP,		.precedence = 66, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = ">", 	.id = GREATER_OP, 		.precedence = 66, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = "==", 	.id = EQUAL_OP, 		.precedence = 64, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = "&", 	.id = BITWISE_AND_OP, 	.precedence = 60, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = "^", 	.id = XOR_OP, 			.precedence = 50, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = "|", 	.id = BITWISE_OR_OP, 	.precedence = 40, .associativity = LEFT_TO_RIGHT, .affix = INFIX},	
-	{.name = "&&", 	.id = AND_OP, 			.precedence = 30, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
-	{.name = "||", 	.id = OR_OP, 			.precedence = 20, .associativity = LEFT_TO_RIGHT, .affix = INFIX},
+	{.name = "*", 	.id = MUL_OP, 			.precedence = 80, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeMul},
+	{.name = "%", 	.id = NPERCENT_OP, 		.precedence = 80, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeModulo},
+	{.name = "/", 	.id = DIV_OP, 			.precedence = 80, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeDiv},
+	{.name = "+", 	.id = ADD_OP, 			.precedence = 70, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeAdd},
+	{.name = "-", 	.id = SUB_OP, 			.precedence = 70, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeSub},
+	{.name = "<<", 	.id = BITWISE_SHIFT_LEFT_OP, 	.precedence = 68, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeShiftLeft},
+	{.name = ">>", 	.id = BITWISE_SHIFT_RIGHT_OP, 	.precedence = 68, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeShiftRight},
+	{.name = "<", 	.id = LESSER_OP,		.precedence = 66, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeLesser},
+	{.name = ">", 	.id = GREATER_OP, 		.precedence = 66, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeGreater},
+	{.name = "==", 	.id = EQUAL_OP, 		.precedence = 64, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeEqual},
+	{.name = "&", 	.id = BITWISE_AND_OP, 	.precedence = 60, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeBitAnd},
+	{.name = "^", 	.id = XOR_OP, 			.precedence = 50, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeXor},
+	{.name = "|", 	.id = BITWISE_OR_OP, 	.precedence = 40, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeBitOr},	
+	{.name = "&&", 	.id = AND_OP, 			.precedence = 30, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeAnd},
+	{.name = "||", 	.id = OR_OP, 			.precedence = 20, .associativity = LEFT_TO_RIGHT, .affix = INFIX, .execute = executeOr},
 	{.name = ")", 	.id = CLOSE_BRACKET, 	.precedence = 10, .associativity = LEFT_TO_RIGHT, .affix = POSTFIX},
 	{.name = "(", 	.id = OPEN_BRACKET, 	.precedence = 9,  .associativity = LEFT_TO_RIGHT, .affix = PREFIX}
 };
@@ -132,15 +134,33 @@ OperatorInfo *getOperatorByIDInSecondaryTable(OperatorID id)
 	return NULL;
 }
 
-// Operator *operatorTryConvertToPrefix(Operator *operator)
-// {
-	// int i = 0;
-	// for(i; i < SECONDARY_TABLE_SIZE; i++)
-	// {
-		// if(secondaryOperatorTable[i].id == operator->info->id)
-		// {
-			// OperatorInfo *info = &secondaryOperatorTable[i];
-			// return (Operator*)info;
-		// }
-	// }
-// }
+OperatorInfo *getOperatorByNameInSecondaryTable(char *name)
+{
+	int i = 0, result;
+	OperatorInfo *info;
+	for(i; i < SECONDARY_TABLE_SIZE; i++)
+	{
+		result = strcmp(secondaryOperatorTable[i].name, name);
+		if(result == 0)
+		{
+			return &secondaryOperatorTable[i];
+		}
+	
+	}
+	return NULL;
+}
+
+Operator *operatorTryConvertToPrefix(Operator *operator)
+{
+	OperatorInfo *secondaryInfo = getOperatorByIDInSecondaryTable(operator->info->id);
+	printf("%d\n\n" , secondaryInfo->id);	
+	
+	if(secondaryInfo != NULL)
+	{
+		operator->type = OPERATOR_TOKEN;
+		operator->info = secondaryInfo;
+		return operator;
+	}
+	
+	return NULL;
+}
