@@ -17,5 +17,10 @@ void executeXor(Stack *dataStack);
 void executeAnd(Stack *dataStack);
 void executeBitAnd(Stack *dataStack);
 void executeBitOr(Stack *dataStack);
+void executeShiftLeft(Stack *dataStack);
+void executeShiftRight(Stack *dataStack);
+void executeLesser(Stack *dataStack);
+void executeGreater(Stack *dataStack);
+void executeEqual(Stack *dataStack);
 
 #endif // Operator_H

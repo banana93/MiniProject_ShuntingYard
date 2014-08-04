@@ -175,3 +175,58 @@ void executeBitOr(Stack *dataStack)
 	getInfixValues(&valueA, &valueB, dataStack);
 	pushNewNumber(valueA | valueB, dataStack);
 }
+
+/*
+	This function will perform shift left operation and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
+*/
+void executeShiftLeft(Stack *dataStack)
+{
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA << valueB, dataStack);
+}
+
+/*
+	This function will perform shift right operation and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
+*/
+void executeShiftRight(Stack *dataStack)
+{
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA >> valueB, dataStack);
+}
+
+/*
+	This function will perform lesser operation and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
+*/
+void executeLesser(Stack *dataStack)
+{
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA < valueB, dataStack);
+}
+
+/*
+	This function will perform greater operation and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
+*/
+void executeGreater(Stack *dataStack)
+{
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA > valueB, dataStack);
+}
+
+/*
+	This function will perform equal operation and it will function call the 
+	getInfixValues and pushNewNumber function due to they work together.
+*/
+void executeEqual(Stack *dataStack)
+{
+	int valueA, valueB;
+	getInfixValues(&valueA, &valueB, dataStack);
+	pushNewNumber(valueA == valueB, dataStack);
+}

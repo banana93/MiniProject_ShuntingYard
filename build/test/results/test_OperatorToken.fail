@@ -1,0 +1,19 @@
+---
+:source:
+  :path: test
+  :file: test_OperatorToken.c
+:successes:
+- :test: test_getOperatorByIDInSecondaryTable_after_ADD_OP_is_passed_in_it_should_return_back_the_info_of_it
+  :line: 12
+  :message: ''
+:failures:
+- :test: test_getOperatorByIDInSecondaryTable_after_UNKNOWN_OP_is_passed_in_it_should_return_NULL
+  :line: 23
+  :message: Expected NULL
+:ignores: []
+:counts:
+  :total: 2
+  :passed: 1
+  :failed: 1
+  :ignored: 0
+:stdout: []

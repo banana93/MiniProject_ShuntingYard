@@ -38,7 +38,7 @@ void test_OperatorByID_should_print_out_BITWISE_OR_OP_details_due_to_BITWISE_OR_
 void test_OperatorByID_should_not_print_out_due_to_the_operator_is_not_in_the_table(void)
 {
 	OperatorInfo *info = getOperatorByID(UNKNOWN_OP);
-	TEST_ASSERT_NOT_NULL(info);
+	TEST_ASSERT_NULL(info);
 }
 
 void test_OperatorByName_should_print_out_ADD_OP_details_due_to_ADD_OP_parameter_is_passed_in(void)
@@ -413,3 +413,163 @@ void test_executeBitOr_after_integer_14_and_1_is_processed_it_should_return_15(v
 	TEST_ASSERT_EQUAL(15, result->value);
 	stackDel(stack);
 }
+
+void test_executeShiftLeft_after_integer_7_and_1_is_processed_it_should_return_14(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(7);
+	Number *value2 = numberNew(1);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeShiftLeft(stack);
+	result = (Number *)stackPop(stack);
+	TEST_ASSERT_EQUAL(14, result->value);
+	stackDel(stack);
+}
+
+void test_executeShiftLeft_after_integer_1_and_4_is_processed_it_should_return_16(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(1);
+	Number *value2 = numberNew(4);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeShiftLeft(stack);
+	result = (Number *)stackPop(stack);
+	TEST_ASSERT_EQUAL(16, result->value);
+	stackDel(stack);
+}
+
+void test_executeShiftRight_after_integer_4_and_1_is_processed_it_should_return_2(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(4);
+	Number *value2 = numberNew(1);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeShiftRight(stack);
+	result = (Number *)stackPop(stack);
+	TEST_ASSERT_EQUAL(2, result->value);
+	stackDel(stack);
+}
+
+void test_executeShiftRight_after_integer_1_and_1_is_processed_it_should_return_0(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(1);
+	Number *value2 = numberNew(1);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeShiftRight(stack);
+	result = (Number *)stackPop(stack);
+	TEST_ASSERT_EQUAL(0, result->value);
+	stackDel(stack);
+}
+
+void test_executeLesser_after_integer_1_and_3_is_processed_it_should_return_1(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(1);
+	Number *value2 = numberNew(3);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeLesser(stack);
+	result = (Number *)stackPop(stack);
+	TEST_ASSERT_EQUAL(1, result->value);
+	stackDel(stack);
+}
+
+void test_executeLesser_after_integer_3_and_1_is_processed_it_should_return_0(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(3);
+	Number *value2 = numberNew(1);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeLesser(stack);
+	result = (Number *)stackPop(stack);
+	TEST_ASSERT_EQUAL(0, result->value);
+	stackDel(stack);
+} 
+
+void test_executeGreater_after_integer_5_and_2_is_processed_it_should_return_1(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(5);
+	Number *value2 = numberNew(2);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeGreater(stack);
+	result = (Number *)stackPop(stack);
+	TEST_ASSERT_EQUAL(1, result->value);
+	stackDel(stack);
+} 
+
+void test_executeGreater_after_integer_2_and_5_is_processed_it_should_return_0(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(2);
+	Number *value2 = numberNew(5);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeGreater(stack);
+	result = (Number *)stackPop(stack);
+	TEST_ASSERT_EQUAL(0, result->value);
+	stackDel(stack);
+} 
+
+void test_executeEqual_after_integer_1_and_1_is_processed_it_should_return_1(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(1);
+	Number *value2 = numberNew(1);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeEqual(stack);
+	result = (Number *)stackPop(stack);
+	TEST_ASSERT_EQUAL(1, result->value);
+	stackDel(stack);
+} 
+
+void test_executeEqual_after_integer_2_and_1_is_processed_it_should_return_0(void)
+{
+	Stack *stack = stackNew(10);
+	Number *result;
+	Number *value1 = numberNew(2);
+	Number *value2 = numberNew(1);
+	
+	stackPush(stack, value1);
+	stackPush(stack, value2);
+	
+	executeEqual(stack);
+	result = (Number *)stackPop(stack);
+	TEST_ASSERT_EQUAL(0, result->value);
+	stackDel(stack);
+} 
